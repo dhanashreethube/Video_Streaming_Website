@@ -1,0 +1,86 @@
+/* App Layout Styles */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-layout {
+  display: flex;
+  margin-top: var(--navbar-height);
+  width: 100%;
+}
+
+/* Content Area Spacing */
+.content-wrapper {
+  flex-grow: 1;
+  min-height: calc(100vh - var(--navbar-height));
+  margin-left: var(--sidebar-width);
+  padding: 24px;
+  transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  width: calc(100% - var(--sidebar-width));
+}
+
+/* Compact layout when sidebar is collapsed */
+.content-wrapper.sidebar-collapsed {
+  margin-left: var(--sidebar-collapsed-width);
+  width: calc(100% - var(--sidebar-collapsed-width));
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Skeleton Loading Animation */
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--border-color);
+  }
+  50% {
+    background-color: var(--surface-hover);
+  }
+  100% {
+    background-color: var(--border-color);
+  }
+}
+
+.skeleton {
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+  border-radius: var(--border-radius-sm);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  .content-wrapper {
+    margin-left: var(--sidebar-collapsed-width);
+    width: calc(100% - var(--sidebar-collapsed-width));
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    margin-left: 0;
+    width: 100%;
+    padding: 16px;
+    padding-bottom: 80px; /* Space for bottom mobile navigation */
+  }
+  
+  .content-wrapper.sidebar-collapsed {
+    margin-left: 0;
+    width: 100%;
+  }
+}

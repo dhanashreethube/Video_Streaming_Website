@@ -1,0 +1,5 @@
+/* Import custom styles */
+@import './styles/index.css';
+@import './styles/App.css';
+@import './styles/Components.css';
+@import './styles/Pages.css';
